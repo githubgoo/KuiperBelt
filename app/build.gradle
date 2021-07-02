@@ -36,6 +36,7 @@ dependencies {
     implementation deps.material
     implementation deps.fragment
     implementation deps.constraint_layout
+    implementation deps.work
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'

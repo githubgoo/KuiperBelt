@@ -10,27 +10,20 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.kuiper.belt.R;
-import com.kuiper.belt.databinding.FragmentMainBinding;
-import com.kuiper.belt.viewmodel.MainFragmentViewModel;
+import com.kuiper.belt.databinding.FragmentWorkerBinding;
+import com.kuiper.belt.viewmodel.WorkerFragmentViewModel;
 
-/**
- * @ClassName: MainFragment
- * @Description:
- * @Author: zhangdi
- * @Date: 2021/6/23 下午4:55
- */
-public class MainFragment extends Fragment implements View.OnClickListener {
-    public static final String TAG = "#MainFragment";
+public class WorkerFragment extends Fragment {
+    public static final String TAG = "#WorkerFragment";
 
-    private FragmentMainBinding mBinding;
-    private MainFragmentViewModel mViewModel;
+    private FragmentWorkerBinding mBinding;
+    private WorkerFragmentViewModel mViewModel;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        mBinding = FragmentMainBinding.inflate(inflater, container, false);
+        mBinding = FragmentWorkerBinding.inflate(inflater, container, false);
         return mBinding.getRoot();
     }
 
@@ -38,6 +31,7 @@ public class MainFragment extends Fragment implements View.OnClickListener {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initView();
+        initData();
     }
 
     @Override
@@ -47,15 +41,11 @@ public class MainFragment extends Fragment implements View.OnClickListener {
     }
 
     private void initView() {
-        mViewModel = new ViewModelProvider(this).get(MainFragmentViewModel.class);
-        mBinding.btnTestWorker.setOnClickListener(this);
+        mViewModel = new ViewModelProvider(this).get(WorkerFragmentViewModel.class);
+        mBinding.tvMsg.setText(TAG);
     }
 
-    @Override
-    public void onClick(View v) {
-        int id = v.getId();
-        if (R.id.btn_test_worker == id) {
-            mViewModel.onTestWorker(getParentFragmentManager());
-        }
+    private void initData() {
+        mViewModel.doWork();
     }
 }

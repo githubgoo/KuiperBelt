@@ -11,5 +11,6 @@ ext {
             fragment         : "androidx.fragment:fragment:1.2.0",
             material         : "com.google.android.material:material:1.2.1",
             constraint_layout: "androidx.constraintlayout:constraintlayout:2.0.4",
+            work             : "androidx.work:work-runtime:2.5.0",
     ]
 }
